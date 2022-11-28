@@ -1,14 +1,14 @@
 import React, { useContext, useMemo } from 'react';
 import { SortableHandle } from 'react-sortable-hoc';
 import AddButton from '../AddButton';
-import RemoveButton from '../RemoveButton';
-import { SplitLine, FillLine, CoverLine } from '../Lines';
-import DefaultNode from '../DefaultNode';
-import { getRegisterNode } from '../utils';
-import { BuilderContext, NodeContext } from '../contexts';
-import { useAction } from '../hooks';
 import Arrow from '../Arrow';
+import { BuilderContext, NodeContext } from '../contexts';
+import DefaultNode from '../DefaultNode';
+import { useAction } from '../hooks';
 import type { INode, IRender } from '../index';
+import { CoverLine, FillLine, SplitLine } from '../Lines';
+import RemoveButton from '../RemoveButton';
+import { getRegisterNode } from '../utils';
 
 interface IProps {
   parentNode?: INode;
@@ -29,6 +29,7 @@ const ConditionNode: React.FC<IProps> = (props) => {
     beforeNodeClick,
     sortable,
     sortableAnchor,
+    customAddIcon,
   } = useContext(BuilderContext);
 
   const node = useContext(NodeContext);
@@ -114,7 +115,7 @@ const ConditionNode: React.FC<IProps> = (props) => {
         <RemoveButton />
       </div>
 
-      <AddButton />
+      <AddButton icon={customAddIcon} />
 
       {Array.isArray(node.children)
         ? renderNext({

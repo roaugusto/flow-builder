@@ -178,6 +178,7 @@ export default Demo;
 | onZoomChange              |                                                                                                                                                                                                                                          | `(outDisabled: boolean, value: number, inDisabled: boolean) => void` |          | -          |         |
 | showArrow                 | Show arrow                                                                                                                                                                                                                               | `boolean`                                                            |          | false      | 1.4.5   |
 | arrowIcon                 | The icon of the arrow                                                                                                                                                                                                                    | `ReactNode`                                                          |          | -          | 1.4.5   |
+| customAddIcon             | Custom icon for node add                                                                                                                                                                                                                 | `ReactNode`                                                          |          | -          | 1.4.6   |
 
 #### HistoryToolConfig
 

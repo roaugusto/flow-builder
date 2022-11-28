@@ -125,6 +125,7 @@ export interface IFlowBuilderProps {
   sortableAnchor?: React.ReactNode;
   showArrow?: boolean;
   arrowIcon?: React.ReactNode;
+  customAddIcon?: React.ReactNode;
 }
 
 export type ZoomType = 'out' | 'in';
@@ -172,10 +173,7 @@ export interface IFlowBuilderMethod {
   context: IFlowBuilderContext;
 }
 
-export { createUuid, buildFlatNodes, buildTreeNodes } from './utils';
-
 export * from './contexts';
-
-export * from './hooks';
-
 export { default } from './FlowBuilder';
+export * from './hooks';
+export { buildFlatNodes, buildTreeNodes, createUuid } from './utils';

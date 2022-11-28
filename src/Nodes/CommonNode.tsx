@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
-import DefaultNode from '../DefaultNode';
 import AddButton from '../AddButton';
+import Arrow from '../Arrow';
+import { BuilderContext, NodeContext } from '../contexts';
+import DefaultNode from '../DefaultNode';
+import { useAction } from '../hooks';
 import RemoveButton from '../RemoveButton';
 import { getRegisterNode } from '../utils';
-import { BuilderContext, NodeContext } from '../contexts';
-import { useAction } from '../hooks';
-import Arrow from '../Arrow';
 
 const CommonNode: React.FC = () => {
-  const { readonly, registerNodes, nodes, beforeNodeClick } =
+  const { readonly, registerNodes, nodes, beforeNodeClick, customAddIcon } =
     useContext(BuilderContext);
 
   const node = useContext(NodeContext);
@@ -43,7 +43,7 @@ const CommonNode: React.FC = () => {
         <RemoveButton />
       </div>
 
-      <AddButton />
+      <AddButton icon={customAddIcon} />
     </div>
   );
 };

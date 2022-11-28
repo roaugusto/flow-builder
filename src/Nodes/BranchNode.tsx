@@ -1,17 +1,17 @@
 import React, { useContext } from 'react';
 import { SortableElement } from 'react-sortable-hoc';
-import DefaultNode from '../DefaultNode';
-import AddButton from '../AddButton';
-import RemoveButton from '../RemoveButton';
-import { SplitLine } from '../Lines';
 import ActionButton from '../ActionButton';
-import DropButton from '../DropButton';
-import { getRegisterNode } from '../utils';
-import type { INode, IRenderNode } from '../index';
+import AddButton from '../AddButton';
+import Arrow from '../Arrow';
 import { BuilderContext, NodeContext } from '../contexts';
+import DefaultNode from '../DefaultNode';
+import DropButton from '../DropButton';
 import { useAction } from '../hooks';
 import AddConditionIcon from '../icons/add-condition.svg';
-import Arrow from '../Arrow';
+import type { INode, IRenderNode } from '../index';
+import { SplitLine } from '../Lines';
+import RemoveButton from '../RemoveButton';
+import { getRegisterNode } from '../utils';
 
 interface IProps {
   renderConditionNode: (params: IRenderNode) => React.ReactNode;
@@ -75,6 +75,7 @@ const BranchNode: React.FC<IProps> = (props) => {
     showPracticalBranchNode,
     showPracticalBranchRemove,
     sortable,
+    customAddIcon,
   } = useContext(BuilderContext);
 
   const node = useContext(NodeContext);
@@ -191,7 +192,7 @@ const BranchNode: React.FC<IProps> = (props) => {
         {sortable ? <SortingDashed /> : null}
       </div>
 
-      <AddButton />
+      <AddButton icon={customAddIcon} />
     </div>
   );
 };

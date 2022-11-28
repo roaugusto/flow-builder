@@ -1,24 +1,28 @@
-import React, { useState, useContext } from 'react';
 import { Popover } from 'antd';
+import React, { useContext, useState } from 'react';
 import ActionButton from '../ActionButton';
-import { SplitLine } from '../Lines';
+import { BuilderContext, NodeContext } from '../contexts';
 import DropButton from '../DropButton';
+import { useAction } from '../hooks';
+import { SplitLine } from '../Lines';
 import {
-  getRegisterNode,
-  getIsStartNode,
-  getIsEndNode,
   getIsBranchNode,
   getIsConditionNode,
+  getIsEndNode,
+  getIsStartNode,
+  getRegisterNode,
 } from '../utils';
-import { BuilderContext, NodeContext } from '../contexts';
-import { useAction } from '../hooks';
 
+import AddBranchIcon from '../icons/add-branch.svg';
 import AddIcon from '../icons/add-button.svg';
 import AddNormalIcon from '../icons/add-normal.svg';
-import AddBranchIcon from '../icons/add-branch.svg';
 import './index.less';
 
-const AddNodeButton: React.FC = () => {
+interface IProps {
+  icon?: React.ReactNode;
+}
+
+const AddNodeButton: React.FC<IProps> = (props) => {
   const {
     registerNodes,
     nodes,
@@ -27,6 +31,7 @@ const AddNodeButton: React.FC = () => {
     DropComponent = DropButton,
   } = useContext(BuilderContext);
 
+  const { icon } = props;
   const node = useContext(NodeContext);
 
   const { addNode } = useAction();
@@ -106,7 +111,7 @@ const AddNodeButton: React.FC = () => {
             getPopupContainer={(triggerNode) => triggerNode as HTMLElement}
           >
             <div onClick={(e) => e.stopPropagation()}>
-              <ActionButton icon={AddIcon} />
+              {icon || <ActionButton icon={AddIcon} />}
             </div>
           </Popover>
         )

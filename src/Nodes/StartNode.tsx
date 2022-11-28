@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import DefaultNode from '../DefaultNode';
 import AddButton from '../AddButton';
-import { getRegisterNode } from '../utils';
 import { BuilderContext, NodeContext } from '../contexts';
+import DefaultNode from '../DefaultNode';
+import { getRegisterNode } from '../utils';
 
 const StartNode: React.FC = () => {
-  const { registerNodes, nodes } = useContext(BuilderContext);
+  const { registerNodes, nodes, customAddIcon } = useContext(BuilderContext);
 
   const node = useContext(NodeContext);
 
@@ -23,7 +23,7 @@ const StartNode: React.FC = () => {
         <Component node={node} nodes={nodes} />
       </div>
 
-      <AddButton />
+      <AddButton icon={customAddIcon} />
     </div>
   );
 };
